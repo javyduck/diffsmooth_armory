@@ -1,4 +1,5 @@
 import os
+import zipfile
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -43,6 +44,11 @@ class DiffsmoothModel(nn.Module):
         self.denoiser.eval()
         # Load Base model from checkpoint
         model_ckpt = os.path.join(dir_name, f'vit_cifar10_sigma_{self.local_sigma}')
+        if not os.path.exists(model_ckpt):
+            zip_file_path = os.path.join(dir_name, 'vit_cifar10_models.zip')
+            # Unzipping the file
+            with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+                zip_ref.extractall(dir_name)
         self.model = ViTForImageClassification.from_pretrained(model_ckpt).to(self.device)
         self.model.eval()
         self.processor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
