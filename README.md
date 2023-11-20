@@ -6,7 +6,7 @@
 
    ## Introduction
 
-   DiffSmooth improves the robustness of machine learning models against adversarial attacks. Utilizing a two-fold strategy, it first applies diffusion models for adversarial purification and then enhances robustness via local smoothing. Our SOTA results include a certified accuracy boost from $36.0\% to $53.0\%$ under $\ell_2$ radius $1.5$ on ImageNet.
+   DiffSmooth improves the robustness of machine learning models against adversarial attacks. Utilizing a two-fold strategy, it first applies diffusion models for adversarial purification and then enhances robustness via local smoothing. Our SOTA results include a certified accuracy boost from $36.0\%$ to $53.0\%$ under $\ell_2$ radius $1.5$ on ImageNet.
 
    ### Parameters
     - denoising_sigma: specify the magnitude for added Gaussian noise (can take in range 0.00~0.50)
